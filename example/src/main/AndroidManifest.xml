@@ -23,7 +23,7 @@
         android:name="com.easyads.info.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ju"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/netwc"
         android:roundIcon="@mipmap/ic_launcher_round"

@@ -41,7 +41,7 @@ repositories {
         dirs 'libs'
     }
     dependencies {
-
+        implementation 'com.squareup.picasso:picasso:2.71828'
         //引入方式1：gradle线上，简单快速
         //EasyAds sdk（必须）
         implementation "com.github.bayescom:EasyAds-Android:1.1"

@@ -5,6 +5,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +17,7 @@ import android.support.v4.view.ViewPager;
 //import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -107,19 +111,32 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                 });
             }
         });
-
         inittabBar();
         initViewPage();
+        TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
+        textView.setTextColor(Color.RED);
     }
     public void inittabBar(){
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
         textView.setText("游戏");
+        ImageView imageView= findViewById(R.id.ll_include).findViewById(R.id.imageView2);
+        imageView.setBackgroundResource(R.drawable.game);
+
         TextView textView2 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
-        textView2.setText("看视频");
+        textView2.setText("赚钱");
+        ImageView imageView2= findViewById(R.id.ll_include2).findViewById(R.id.imageView2);
+        imageView2.setImageResource(R.drawable.makemoney);
+
         TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
         textView3.setText("购物");
+        ImageView imageView3= findViewById(R.id.ll_include3).findViewById(R.id.imageView2);
+        imageView3.setImageResource(R.drawable.gouwun);
+
         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
         textView4.setText("我的");
+        ImageView imageView4= findViewById(R.id.ll_include4).findViewById(R.id.imageView2);
+        imageView4.setImageResource(R.drawable.mynew);
+
         findViewById(R.id.ll_include).setOnClickListener(this);
         findViewById(R.id.ll_include2).setOnClickListener(this);
         findViewById(R.id.ll_include3).setOnClickListener(this);
@@ -135,13 +152,55 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         MoneyPageAdapter moneyPageAdapter=new MoneyPageAdapter(list);
         viewPager.setAdapter(moneyPageAdapter);
         listView=((ViewGroup)list.get(0)).findViewById(R.id.gamelist);
-        GameItemBean[]gameItemBean={ new GameItemBean("","1212"), new GameItemBean("","232"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342")};
-        GamelistAdapter gamelistAdapter=new GamelistAdapter(this,gameItemBean);
-        listView.setAdapter(gamelistAdapter);
+//        GameItemBean[]gameItemBean={ new GameItemBean("","1212"), new GameItemBean("","232"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342")};
+//        GamelistAdapter gamelistAdapter=new GamelistAdapter(this,gameItemBean);
+//        listView.setAdapter(gamelistAdapter);
         ListView listView2=((ViewGroup)list.get(1)).findViewById(R.id.advideo);
         AdItem[]gameItemBean2={ new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("今天看10个广告领奖","以观看4个","200"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","100"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高") };
         AdvideoAdapter gamelistAdapter2=new AdvideoAdapter(this,gameItemBean2);
         listView2.setAdapter(gamelistAdapter2);
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                switch (i){
+                    case 0:
+                        resertColor(R.id.ll_include);
+                        TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
+                        textView.setTextColor(Color.RED);
+                        break;
+                    case 1:
+                        resertColor(R.id.ll_include2);
+                        TextView textView1 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
+                        textView1.setTextColor(Color.RED);
+                        break;
+                    case 2:
+                        resertColor(R.id.ll_include3);
+                        TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
+                        textView3.setTextColor(Color.RED);
+                        break;
+
+                    case 3:
+                        resertColor(R.id.ll_include4);
+                        TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
+                        textView4.setTextColor(Color.RED);
+                        break;
+
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
     @Override
     public void onClick(View v) {
@@ -158,6 +217,27 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
             case R.id.ll_include4:
                 viewPager.setCurrentItem(3);
                 break;
+        }
+    }
+
+    private void resertColor(int id){
+        if (id!=R.id.ll_include){
+            TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
+            textView.setTextColor(Color.BLACK);
+        }
+        if (id!=R.id.ll_include2) {
+            TextView textView1 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
+            textView1.setTextColor(Color.BLACK);
+        }
+
+        if (id!=R.id.ll_include3) {
+            TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
+            textView3.setTextColor(Color.BLACK);
+        }
+
+        if (id!=R.id.ll_include4) {
+            TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
+            textView4.setTextColor(Color.BLACK);
         }
     }
     @Override
