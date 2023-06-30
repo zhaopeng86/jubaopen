@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 
 import com.easyads.info.R;
+import com.easyads.info.TaskDetailsEditeActivity;
 import com.easyads.info.activity.BaseActivity;
 import com.easyads.info.activity.DetailActivity;
 import com.easyads.info.activity.SingleUpdateView;
@@ -168,8 +169,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         AdItem[]gameItemBean2={ new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("今天看10个广告领奖","以观看4个","200"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","100"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高") };
         AdvideoAdapter gamelistAdapter2=new AdvideoAdapter(this,gameItemBean2);
         listView2.setAdapter(gamelistAdapter2);
-
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -333,4 +332,9 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         textViewmonry.setText("约="+ d+ "元");
     }
 
+
+    public  void reportTask(View view){
+        Intent intent=new Intent(MakeMoneyActivity.this, TaskDetailsEditeActivity.class);
+        startActivity(intent);
+    }
 }

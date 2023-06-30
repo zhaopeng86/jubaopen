@@ -38,6 +38,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.easyads.info.makemoney.GameDetailsActivity" />
+
+        <activity android:name="com.easyads.info.TaskDetailsEditeActivity" />
         <activity android:name="com.easyads.info.SplashActivity" />
         <activity android:name="com.easyads.info.NativeExpressActivity" />
         <activity android:name="com.easyads.info.RewardVideoActivity" />
