@@ -130,17 +130,25 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
         textView3.setText("购物");
         ImageView imageView3= findViewById(R.id.ll_include3).findViewById(R.id.imageView2);
-        imageView3.setImageResource(R.drawable.gouwun);
+        imageView3.setImageResource(R.drawable.gw);
 
         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
-        textView4.setText("我的");
+        textView4.setText("发布任务");
         ImageView imageView4= findViewById(R.id.ll_include4).findViewById(R.id.imageView2);
-        imageView4.setImageResource(R.drawable.mynew);
+        imageView4.setImageResource(R.drawable.sendtask);
+
+
+        TextView textView5 = findViewById(R.id.ll_include5).findViewById(R.id.textView5);
+        textView5.setText("我的");
+        ImageView imageView5= findViewById(R.id.ll_include5).findViewById(R.id.imageView2);
+        imageView5.setImageResource(R.drawable.mynew);
 
         findViewById(R.id.ll_include).setOnClickListener(this);
         findViewById(R.id.ll_include2).setOnClickListener(this);
         findViewById(R.id.ll_include3).setOnClickListener(this);
         findViewById(R.id.ll_include4).setOnClickListener(this);
+        findViewById(R.id.ll_include5).setOnClickListener(this);
+
     }
     public void initViewPage(){
         viewPager=findViewById(R.id.viewpage);
@@ -148,6 +156,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         list.add(getLayoutInflater().inflate(R.layout.mingame,null));
         list.add(getLayoutInflater().inflate(R.layout.advideo,null));
         list.add(getLayoutInflater().inflate(R.layout.payment,null));
+        list.add(getLayoutInflater().inflate(R.layout.tasklayout,null));
         list.add(getLayoutInflater().inflate(R.layout.setting,null));
         MoneyPageAdapter moneyPageAdapter=new MoneyPageAdapter(list);
         viewPager.setAdapter(moneyPageAdapter);
@@ -191,6 +200,12 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
                         textView4.setTextColor(Color.RED);
                         break;
+                    case 4:
+                        resertColor(R.id.ll_include5);
+                        TextView textView5 = findViewById(R.id.ll_include5).findViewById(R.id.textView5);
+                        textView5.setTextColor(Color.RED);
+                        break;
+
 
                 }
 
@@ -217,6 +232,9 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
             case R.id.ll_include4:
                 viewPager.setCurrentItem(3);
                 break;
+            case R.id.ll_include5:
+                viewPager.setCurrentItem(4);
+                break;
         }
     }
 
@@ -238,6 +256,11 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         if (id!=R.id.ll_include4) {
             TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
             textView4.setTextColor(Color.BLACK);
+        }
+
+        if (id!=R.id.ll_include5) {
+            TextView textView5 = findViewById(R.id.ll_include5).findViewById(R.id.textView5);
+            textView5.setTextColor(Color.BLACK);
         }
     }
     @Override
