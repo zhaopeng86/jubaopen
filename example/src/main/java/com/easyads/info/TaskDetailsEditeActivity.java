@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +44,8 @@ public class TaskDetailsEditeActivity extends Activity {
         alertBuilder.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(TaskDetailsEditeActivity.this, items[i], Toast.LENGTH_SHORT).show();
+                Button button= findViewById(R.id.tasktype);
+                button.setText(items[i]);
             }
         });
 
@@ -58,6 +60,8 @@ public class TaskDetailsEditeActivity extends Activity {
         alertBuilder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                Button button= findViewById(R.id.tasktype);
+                button.setText(items[i]);
                 alertDialog2.dismiss();
             }
         });
