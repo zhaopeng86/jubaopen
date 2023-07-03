@@ -19,7 +19,7 @@ public class TaskDetailsEditeActivity extends Activity {
     private AlertDialog alertDialog3; //多选框
     final String[] items1 = {"抖音推广", "快手推广", "ETC业务", "微信点赞"};
     final String[] items2 = {"10000金币", "20000金币", "30000金币", "40000金币"};
-    final String[] items3 = {"只适合女性", "只适合男性", "位置5公里之内", "不限位置"};
+    final String[] items3 = {"只适合女性", "只适合男性", "位置5公里之内", "不限"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

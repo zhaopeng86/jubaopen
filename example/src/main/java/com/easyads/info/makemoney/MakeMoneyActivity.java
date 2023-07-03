@@ -135,19 +135,19 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
 
     public void inittabBar(){
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
-        textView.setText("游戏");
+        textView.setText("游戏赚");
         ImageView imageView= findViewById(R.id.ll_include).findViewById(R.id.imageView2);
         imageView.setBackgroundResource(R.drawable.game);
 
         TextView textView2 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
-        textView2.setText("赚钱");
+        textView2.setText("任务赚");
         ImageView imageView2= findViewById(R.id.ll_include2).findViewById(R.id.imageView2);
         imageView2.setImageResource(R.drawable.makemoney);
 
         TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
-        textView3.setText("购物");
+        textView3.setText("任务赚");
         ImageView imageView3= findViewById(R.id.ll_include3).findViewById(R.id.imageView2);
-        imageView3.setImageResource(R.drawable.gw);
+        imageView3.setImageResource(R.drawable.tak);
 
         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
         textView4.setText("发布任务");
