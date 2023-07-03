@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +13,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 //import androidx.viewpager.widget.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,9 +24,9 @@ import android.widget.TextView;
 import com.easyads.info.R;
 import com.easyads.info.TaskDetailsEditeActivity;
 import com.easyads.info.activity.BaseActivity;
-import com.easyads.info.activity.DetailActivity;
 import com.easyads.info.activity.SingleUpdateView;
 import com.easyads.info.activity.UpDateView;
+import com.easyads.info.anrcheck.ANRWatchDog;
 import com.easyads.info.entity.AdItem;
 import com.easyads.info.entity.GameItemBean;
 import com.easyads.info.entity.OwerProjectEntity;
@@ -58,6 +57,22 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ANRWatchDog.getInstance().start();
+        ANRWatchDog.getInstance().addANRListener(new ANRWatchDog.ANRListener() {
+            @Override
+            public void onAnrHappened(String stackTraceInfo) {
+                Log.e("ANRWatchDog ANRHappe-->","hanppen1111111"+stackTraceInfo);
+            }
+
+            @Override
+            public void onNotAnrHappened() {
+                Log.e("ANRWatchDog notAnr-->","onNotAnrHappened2222");
+
+            }
+        });
+
+
+
         linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.makemoney,null);
         setContentView(linearLayoutAll);
         boolean hasPri = getSharedPreferences(Constant.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constant.SP_AGREE_PRIVACY, false);
@@ -117,6 +132,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
         textView.setTextColor(Color.RED);
     }
+
     public void inittabBar(){
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
         textView.setText("游戏");

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.easyads.EasyAds;
 import com.baidu.mobads.sdk.api.AdSettings;
+import com.easyads.info.anrcheck.ANRWatchDog;
 import com.easyads.info.custom.CustomActivity;
 import com.easyads.info.utils.BaseCallBack;
 import com.easyads.info.utils.Constant;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity {
                 NormalSetting.getInstance().showLogcat = isChecked;
             }
         });
+
 
         TextView title = findViewById(R.id.tv_title);
         title.setText("EasyAds-简单聚合 急速变现");

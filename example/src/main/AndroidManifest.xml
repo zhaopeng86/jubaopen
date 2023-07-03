@@ -44,6 +44,8 @@
         <activity android:name="com.easyads.info.NativeExpressActivity" />
         <activity android:name="com.easyads.info.RewardVideoActivity" />
         <activity android:name="com.easyads.info.BannerActivity" />
+
+        <activity android:name=".makemoney.SetttingTaskActivity" />
         <activity android:name="com.easyads.info.FullScreenVideoActivity" />
         <activity
             android:name="com.easyads.info.InterstitialActivity"
