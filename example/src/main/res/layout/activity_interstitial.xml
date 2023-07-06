@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".InterstitialActivity">
+    tools:context="com.minigame.info.InterstitialActivity">
 
     <Button
         android:layout_width="match_parent"

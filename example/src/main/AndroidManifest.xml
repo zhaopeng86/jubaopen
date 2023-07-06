@@ -20,7 +20,7 @@
     <!-- 如果有视频相关的广告且使用textureView播放，请务必添加，否则黑屏 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <application
-        android:name="com.easyads.info.MyApplication"
+        android:name="com.minigame.info.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ju"
@@ -29,7 +29,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name="com.easyads.info.makemoney.MakeMoneyActivity">
+        <activity android:name="com.minigame.info.makemoney.MakeMoneyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -37,25 +37,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.easyads.info.makemoney.GameDetailsActivity" />
+        <activity android:name="com.minigame.info.makemoney.GameDetailsActivity" />
 
-        <activity android:name="com.easyads.info.TaskDetailsEditeActivity" />
-        <activity android:name="com.easyads.info.SplashActivity" />
-        <activity android:name="com.easyads.info.NativeExpressActivity" />
-        <activity android:name="com.easyads.info.RewardVideoActivity" />
-        <activity android:name="com.easyads.info.BannerActivity" />
+        <activity android:name="com.minigame.info.TaskDetailsEditeActivity" />
+        <activity android:name="com.minigame.info.SplashActivity" />
+        <activity android:name="com.minigame.info.NativeExpressActivity" />
+        <activity android:name="com.minigame.info.RewardVideoActivity" />
+        <activity android:name="com.minigame.info.BannerActivity" />
 
-        <activity android:name=".makemoney.SetttingTaskActivity" />
-        <activity android:name="com.easyads.info.FullScreenVideoActivity" />
+        <activity android:name="com.minigame.info.makemoney.SetttingTaskActivity" />
+        <activity android:name="com.minigame.info.FullScreenVideoActivity" />
         <activity
-            android:name="com.easyads.info.InterstitialActivity"
+            android:name="com.minigame.info.InterstitialActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity android:name="com.easyads.info.SplashToMainActivity" />
-        <activity android:name="com.easyads.info.NativeExpressRecyclerViewActivity" />
+        <activity android:name="com.minigame.info.SplashToMainActivity" />
+        <activity android:name="com.minigame.info.NativeExpressRecyclerViewActivity" />
         <activity
-            android:name="com.easyads.info.DrawActivity"
+            android:name="com.minigame.info.DrawActivity"
             android:configChanges="keyboard|orientation|screenSize" />
-        <activity android:name="com.easyads.info.custom.CustomActivity" />
+        <activity android:name="com.minigame.info.custom.CustomActivity" />
 
         <!--        小米广告SDK需要          -->
         <provider
