@@ -57,21 +57,19 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ANRWatchDog.getInstance().start();
-        ANRWatchDog.getInstance().addANRListener(new ANRWatchDog.ANRListener() {
-            @Override
-            public void onAnrHappened(String stackTraceInfo) {
-                Log.e("ANRWatchDog ANRHappe-->","hanppen1111111"+stackTraceInfo);
-            }
-
-            @Override
-            public void onNotAnrHappened() {
-                Log.e("ANRWatchDog notAnr-->","onNotAnrHappened2222");
-
-            }
-        });
-
-
+//        ANRWatchDog.getInstance().start();
+//        ANRWatchDog.getInstance().addANRListener(new ANRWatchDog.ANRListener() {
+//            @Override
+//            public void onAnrHappened(String stackTraceInfo) {
+//                Log.e("ANRWatchDog ANRHappe-->","hanppen1111111"+stackTraceInfo);
+//            }
+//
+//            @Override
+//            public void onNotAnrHappened() {
+//                Log.e("ANRWatchDog notAnr-->","onNotAnrHappened2222");
+//
+//            }
+//        });
 
         linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.makemoney,null);
         setContentView(linearLayoutAll);
@@ -135,12 +133,12 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
 
     public void inittabBar(){
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
-        textView.setText("游戏赚");
+        textView.setText("游戏");
         ImageView imageView= findViewById(R.id.ll_include).findViewById(R.id.imageView2);
         imageView.setBackgroundResource(R.drawable.game);
 
         TextView textView2 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
-        textView2.setText("任务赚");
+        textView2.setText("赚钱");
         ImageView imageView2= findViewById(R.id.ll_include2).findViewById(R.id.imageView2);
         imageView2.setImageResource(R.drawable.makemoney);
 

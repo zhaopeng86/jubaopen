@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <WebView
+    <com.easyads.info.makemoney.Html5WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/webcontent"
@@ -20,6 +20,4 @@
         android:text="返回"
         >
     </Button>
-
-
 </FrameLayout>
