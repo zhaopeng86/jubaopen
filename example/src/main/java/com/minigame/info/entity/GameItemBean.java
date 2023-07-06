@@ -1,6 +1,7 @@
 package com.minigame.info.entity;
 
-public class GameItemBean extends BaseDataEntity{
+public class
+GameItemBean extends BaseDataEntity{
 
     private String imageUrl;
     private String des;
@@ -11,6 +12,16 @@ public class GameItemBean extends BaseDataEntity{
     private String rating;
 
     private String onlineNumber;
+
+    private String maxreaward;
+
+    public String getMaxreaward() {
+        return maxreaward;
+    }
+
+    public void setMaxreaward(String maxreaward) {
+        this.maxreaward = maxreaward;
+    }
 
     public String getRating() {
         return rating;

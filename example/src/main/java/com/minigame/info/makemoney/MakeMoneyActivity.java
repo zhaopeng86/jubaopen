@@ -89,7 +89,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                 ParseManager.parseJsonWithListJsonObject(response, MakeMoneyActivity.this);
             }
         });
-
         HttpUtil.sendRequestAsynchronous(UrlUtils.App_Get_MyProject_list, new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -119,7 +118,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
         textView.setTextColor(Color.RED);
         Button button=findViewById(R.id.getmoney).findViewById(R.id.getmoneyto);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
