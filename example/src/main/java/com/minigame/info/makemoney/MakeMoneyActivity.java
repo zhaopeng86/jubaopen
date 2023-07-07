@@ -63,9 +63,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.makemoney,null);
         setContentView(linearLayoutAll);
         boolean hasPri = getSharedPreferences(Constant.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constant.SP_AGREE_PRIVACY, false);
-        /**
-         * 注意！：由于工信部对设备权限等隐私权限要求愈加严格，强烈推荐APP提前申请好权限，且用户同意隐私政策后再加载广告
-         */
         if (!hasPri) {
             UserPrivacyDialog dialog = new UserPrivacyDialog(this);
             dialog.callBack = new BaseCallBack() {
@@ -98,17 +95,21 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                 ParseManager.parseJsonWithListJsonObject(response, new SingleUpdateView() {
                     @Override
                     public void singleUpdateView(Object ob) {
-                        OwerProjectEntity[] owerProjectEntity=(OwerProjectEntity[])ob;
-                        TextView textViewconr=findViewById(R.id.cornid);
-                        textViewconr.setText(owerProjectEntity[0].getCommitinfo());
-                        TextView textViewmonry=findViewById(R.id.moneyid);
-                        int a=Integer.parseInt(String.valueOf(textViewconr.getText()));
-                        NumberFormat numberFormat = NumberFormat.getNumberInstance();
-                        numberFormat.setMaximumFractionDigits(2);
-                        double f=a;
-                        double c = f/10000;
-                        String d=numberFormat.format(c);
-                        textViewmonry.setText("约="+ d+ "元");
+                        try {
+                            OwerProjectEntity[] owerProjectEntity=(OwerProjectEntity[])ob;
+                            TextView textViewconr=findViewById(R.id.cornid);
+                            textViewconr.setText(owerProjectEntity[0].getCommitinfo());
+                            TextView textViewmonry=findViewById(R.id.moneyid);
+                            int a=Integer.parseInt(String.valueOf(textViewconr.getText()));
+                            NumberFormat numberFormat = NumberFormat.getNumberInstance();
+                            numberFormat.setMaximumFractionDigits(2);
+                            double f=a;
+                            double c = f/10000;
+                            String d=numberFormat.format(c);
+                            textViewmonry.setText("约="+ d+ "元");
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
                 });
             }
@@ -135,7 +136,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         TextView textView2 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
         textView2.setText("赚钱");
         ImageView imageView2= findViewById(R.id.ll_include2).findViewById(R.id.imageView2);
-        imageView2.setImageResource(R.drawable.makemoney);
+        imageView2.setImageResource(R.drawable.gw);
 
         TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
         textView3.setText("任务赚");
@@ -151,7 +152,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         TextView textView5 = findViewById(R.id.ll_include5).findViewById(R.id.textView5);
         textView5.setText("我的");
         ImageView imageView5= findViewById(R.id.ll_include5).findViewById(R.id.imageView2);
-        imageView5.setImageResource(R.drawable.mynew);
+        imageView5.setImageResource(R.drawable.sendtask);
 
         findViewById(R.id.ll_include).setOnClickListener(this);
         findViewById(R.id.ll_include2).setOnClickListener(this);
@@ -229,19 +230,24 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_include:
+                if (viewPager!=null)
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.ll_include2:
-                viewPager.setCurrentItem(1);
+                if (viewPager!=null)
+                    viewPager.setCurrentItem(1);
                 break;
             case R.id.ll_include3:
-                viewPager.setCurrentItem(2);
+                if (viewPager!=null)
+                    viewPager.setCurrentItem(2);
                 break;
             case R.id.ll_include4:
-                viewPager.setCurrentItem(3);
+                if (viewPager!=null)
+                    viewPager.setCurrentItem(3);
                 break;
             case R.id.ll_include5:
-                viewPager.setCurrentItem(4);
+                if (viewPager!=null)
+                    viewPager.setCurrentItem(4);
                 break;
         }
     }
@@ -273,14 +279,19 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     }
     @Override
     public void updateView(Object ob) {
-        GameItemBean[] userInfers = (GameItemBean[]) ob;
-        GamelistAdapter listInformAdapter = new GamelistAdapter(this, (GameItemBean[]) userInfers);
-        listView.setAdapter(listInformAdapter);
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent=new Intent(MakeMoneyActivity.this, GameDetailsActivity.class);
-            intent.putExtra("url", userInfers[position].getClickUrl());
-            startActivity(intent);
-        });
+        try {
+            GameItemBean[] userInfers = (GameItemBean[]) ob;
+            GamelistAdapter listInformAdapter = new GamelistAdapter(this, (GameItemBean[]) userInfers);
+            listView.setAdapter(listInformAdapter);
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                Intent intent=new Intent(MakeMoneyActivity.this, GameDetailsActivity.class);
+                intent.putExtra("url", userInfers[position].getClickUrl());
+                startActivity(intent);
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
     @TargetApi(Build.VERSION_CODES.M)
     private void checkAndRequestPermission() {
@@ -330,15 +341,20 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         });
     }
     private void updateMoneyText(int value) {
-        TextView textViewconr=findViewById(R.id.cornid);
-        int b=Integer.parseInt(String.valueOf(textViewconr.getText()))+value;
-        textViewconr.setText(String.valueOf(b));
-        TextView textViewmonry=findViewById(R.id.moneyid);
-        NumberFormat numberFormat = NumberFormat.getNumberInstance();
-        numberFormat.setMaximumFractionDigits(2);
-        double f=b;
-        String d=numberFormat.format(f/10000);
-        textViewmonry.setText("约="+ d+ "元");
+        try {
+            TextView textViewconr=findViewById(R.id.cornid);
+            int b=Integer.parseInt(String.valueOf(textViewconr.getText()))+value;
+            textViewconr.setText(String.valueOf(b));
+            TextView textViewmonry=findViewById(R.id.moneyid);
+            NumberFormat numberFormat = NumberFormat.getNumberInstance();
+            numberFormat.setMaximumFractionDigits(2);
+            double f=b;
+            String d=numberFormat.format(f/10000);
+            textViewmonry.setText("约="+ d+ "元");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

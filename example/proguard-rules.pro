@@ -44,6 +44,11 @@
     -keepclasseswithmembernames class * {
         native <methods>;
     }
+
+    -keep public class com.minigame.info.utils.**{*;}
+    -keep public class com.minigame.info.entity.**{*;}
+    -keep public class com.minigame.info.makemoney.**{*;}
+
     #保持自定义控件类不被混淆
     -keepclasseswithmembers class * {
         public <init>(android.content.Context, android.util.AttributeSet);

@@ -59,9 +59,14 @@ public class GamelistAdapter extends BaseAdapter {
         viewHolder.textViewDes.setText(data[position].getDes());
         viewHolder.DesDetaile.setText(data[position].getDetatle());
 
-        viewHolder.ratingBar.setRating(Integer.parseInt(data[position].getRating()));
+        try {
+            viewHolder.ratingBar.setRating(Integer.parseInt(data[position].getRating()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         viewHolder.onLineNumber.setText(data[position].getOnlineNumber()+"人在线");
+
         if (!TextUtils.isEmpty(data[position].getImageUrl())){
             Picasso.get()
                     .load(data[position].getImageUrl())  // 图片的 uri，可以是网络链接，也可以说本地资源

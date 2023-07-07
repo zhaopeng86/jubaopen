@@ -18,8 +18,7 @@ public class UserPrivacyDialog extends Dialog {
         setContentView(R.layout.dialog_user_privacy);
 
         TextView cont = findViewById(R.id.tv_dup_content);
-        cont.setText("此弹框为模拟APP隐私政策流程弹框，APP开发者在集成SDK时，建议参考demo中初始化相关流程代码，不要过早初始化SDK，当用户'同意'该隐私政策后再执行一系列SDK的初始化或权限申请，以防止合规检测不通过。");
-
+        cont.setText("获取手机基础权限，有助于更好的体验app");
         TextView y = findViewById(R.id.tv_dup_yes);
         TextView n = findViewById(R.id.tv_dup_no);
 

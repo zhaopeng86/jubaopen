@@ -47,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
-            android:src="@mipmap/search_icon"
             android:tint="#f2f2f2" />
     </RelativeLayout>
 
@@ -82,8 +81,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@mipmap/add_bg" />
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"

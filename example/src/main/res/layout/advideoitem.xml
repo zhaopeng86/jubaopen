@@ -10,9 +10,9 @@
         android:id="@+id/imagebutton"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:background="@drawable/jinbi"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/jj"></ImageView>
+        android:layout_centerVertical="true"></ImageView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +45,7 @@
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:src="@drawable/jj"></ImageView>
+                ></ImageView>
             <TextView
                 android:id="@+id/corn"
                 android:layout_width="wrap_content"
