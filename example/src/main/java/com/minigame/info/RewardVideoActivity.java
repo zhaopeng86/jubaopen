@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.easyads.core.reward.EasyAdRewardVideo;
-import com.easyads.info.R;
 
 public class RewardVideoActivity extends BaseActivity {
     EasyAdRewardVideo rewardVideo;

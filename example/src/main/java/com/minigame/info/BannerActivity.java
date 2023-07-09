@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.easyads.info.R;
 
 public class BannerActivity extends BaseActivity {
     RelativeLayout rl;

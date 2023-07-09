@@ -26,23 +26,35 @@
         >
     </TextView>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpage"
-        android:layout_marginTop="5dp"
         android:layout_above="@+id/bottom"
         android:layout_below="@+id/gametitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
+
+
+    <com.minigame.info.customview.VideoPlayRecyclerView
+        android:id="@+id/viewpage2"
+        android:layout_marginTop="5dp"
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/gametitle"
+        android:visibility="gone"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.minigame.info.customview.VideoPlayRecyclerView>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:id="@+id/bottom"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
         <include android:id="@+id/ll_include" layout="@layout/tablayout"/>
         <include android:id="@+id/ll_include2" layout="@layout/tablayout"/>
-        <include android:id="@+id/ll_include3" layout="@layout/tablayout" android:visibility="gone"/>
+        <include android:id="@+id/ll_include3" layout="@layout/tablayout"/>
         <include android:id="@+id/ll_include4" layout="@layout/tablayout" android:visibility="gone"/>
         <include android:id="@+id/ll_include5" layout="@layout/tablayout"/>
     </LinearLayout>

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.easyads.info.R;
+import com.minigame.info.R;
 import com.minigame.info.entity.PromoteEntity;
 
 import java.lang.ref.WeakReference;

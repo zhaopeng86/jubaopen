@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.easyads.info.R;
 import com.minigame.info.utils.Constant;
 
 

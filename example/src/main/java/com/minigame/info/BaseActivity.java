@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import com.minigame.info.utils.DialogLogcat;
 import com.minigame.info.utils.NormalSetting;

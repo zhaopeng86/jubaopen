@@ -1,11 +1,11 @@
 package com.minigame.info;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.easyads.core.full.EasyAdFullScreenVideo;
-import com.easyads.info.R;
 
 public class FullScreenVideoActivity extends BaseActivity {
     EasyAdFullScreenVideo fullScreenVideo;

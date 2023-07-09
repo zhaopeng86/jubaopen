@@ -2,12 +2,13 @@ package com.minigame.info.utils;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.minigame.info.MyApplication;
-import com.easyads.info.R;
+import com.minigame.info.R;
 
 public class UserPrivacyDialog extends Dialog {
 

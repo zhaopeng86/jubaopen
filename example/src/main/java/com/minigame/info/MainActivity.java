@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.easyads.EasyAds;
 import com.baidu.mobads.sdk.api.AdSettings;
-import com.easyads.info.R;
 import com.minigame.info.custom.CustomActivity;
 import com.minigame.info.utils.BaseCallBack;
 import com.minigame.info.utils.Constant;

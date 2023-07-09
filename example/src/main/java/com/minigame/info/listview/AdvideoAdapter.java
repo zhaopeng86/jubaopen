@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.minigame.info.EasyADController;
-import com.easyads.info.R;
+import com.minigame.info.R;
 import com.minigame.info.entity.AdItem;
 import com.minigame.info.makemoney.MakeMoneyActivity;
 

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easyads.info.R;
+import com.minigame.info.R;
 import com.minigame.info.entity.OwerProjectEntity;
 
 public class OwerProjectListAdapter extends BaseAdapter {

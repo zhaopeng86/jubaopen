@@ -4,7 +4,8 @@ package com.minigame.info.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.easyads.info.R;
+
+import com.minigame.info.R;
 
 public class LoginActivity extends BaseActivity {
     @Override

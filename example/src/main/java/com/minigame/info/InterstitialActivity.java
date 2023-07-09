@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.easyads.core.inter.EasyAdInterstitial;
-import com.easyads.info.R;
 
 public class InterstitialActivity extends BaseActivity {
     EasyAdInterstitial interstitialAD;

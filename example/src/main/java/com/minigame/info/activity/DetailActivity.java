@@ -2,14 +2,15 @@ package com.minigame.info.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easyads.info.R;
+import androidx.annotation.Nullable;
+
+import com.minigame.info.R;
 import com.minigame.info.utils.HttpUtil;
 import com.minigame.info.utils.ParseManager;
 import com.minigame.info.utils.UrlUtils;

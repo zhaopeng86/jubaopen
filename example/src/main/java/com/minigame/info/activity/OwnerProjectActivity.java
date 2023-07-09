@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.easyads.info.R;
+import com.minigame.info.R;
 import com.minigame.info.entity.OwerProjectEntity;
 import com.minigame.info.listview.OwerProjectListAdapter;
 import com.minigame.info.utils.HttpUtil;

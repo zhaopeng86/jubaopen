@@ -2,10 +2,11 @@ package com.minigame.info.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ListView;
 
-import com.easyads.info.R;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.minigame.info.R;
 import com.minigame.info.entity.PromoteEntity;
 import com.minigame.info.listview.ListInferAdapter;
 import com.minigame.info.utils.HttpUtil;

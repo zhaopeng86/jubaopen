@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.easyads.info.R;
 
 public class NativeExpressActivity extends BaseActivity {
     private FrameLayout container;

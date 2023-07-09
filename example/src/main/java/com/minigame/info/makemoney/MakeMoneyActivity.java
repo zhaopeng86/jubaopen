@@ -11,22 +11,26 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
 //import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.easyads.info.R;
+import androidx.viewpager.widget.ViewPager;
+
+import com.minigame.info.R;
 import com.minigame.info.TaskDetailsEditeActivity;
 import com.minigame.info.activity.BaseActivity;
 import com.minigame.info.activity.SingleUpdateView;
 import com.minigame.info.activity.UpDateView;
+import com.minigame.info.customview.MainAdapter;
+import com.minigame.info.customview.VideoPlayRecyclerView;
 import com.minigame.info.entity.AdItem;
 import com.minigame.info.entity.GameItemBean;
 import com.minigame.info.entity.OwerProjectEntity;
@@ -53,7 +57,9 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     ViewGroup linearLayoutAll;
     ViewPager viewPager;
     ListView listView;
+    LinearLayout linearLayouttitle;
 
+    TextView textViewtitle;
     /**
      * @param savedInstanceState
      */
@@ -62,6 +68,10 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.makemoney,null);
         setContentView(linearLayoutAll);
+        linearLayouttitle=findViewById(R.id.money);
+        textViewtitle=findViewById(R.id.gametitle);
+        linearLayouttitle.setVisibility(View.GONE);
+        textViewtitle.setVisibility(View.GONE);
         boolean hasPri = getSharedPreferences(Constant.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constant.SP_AGREE_PRIVACY, false);
         if (!hasPri) {
             UserPrivacyDialog dialog = new UserPrivacyDialog(this);
@@ -125,23 +135,24 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), "满20元才能提现，请继续努力", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     public void inittabBar(){
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
-        textView.setText("游戏");
+        textView.setText("视频");
         ImageView imageView= findViewById(R.id.ll_include).findViewById(R.id.imageView2);
-        imageView.setBackgroundResource(R.drawable.game);
+        imageView.setBackgroundResource(R.drawable.video);
 
         TextView textView2 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
-        textView2.setText("赚钱");
+        textView2.setText("游戏");
         ImageView imageView2= findViewById(R.id.ll_include2).findViewById(R.id.imageView2);
-        imageView2.setImageResource(R.drawable.gw);
+        imageView2.setImageResource(R.drawable.game);
 
         TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
-        textView3.setText("任务赚");
+        textView3.setText("赚钱");
         ImageView imageView3= findViewById(R.id.ll_include3).findViewById(R.id.imageView2);
-        imageView3.setImageResource(R.drawable.tak);
+        imageView3.setImageResource(R.drawable.gw);
 
         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
         textView4.setText("发布任务");
@@ -161,25 +172,32 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         findViewById(R.id.ll_include5).setOnClickListener(this);
 
     }
+    private VideoPlayRecyclerView mRvVideo;
+    private MainAdapter adapter;
     public void initViewPage(){
         viewPager=findViewById(R.id.viewpage);
         LinkedList list= new LinkedList();
+        list.add(getLayoutInflater().inflate(R.layout.payment,null));
         list.add(getLayoutInflater().inflate(R.layout.mingame,null));
         list.add(getLayoutInflater().inflate(R.layout.advideo,null));
-        list.add(getLayoutInflater().inflate(R.layout.payment,null));
         list.add(getLayoutInflater().inflate(R.layout.tasklayout,null));
         list.add(getLayoutInflater().inflate(R.layout.setting,null));
         MoneyPageAdapter moneyPageAdapter=new MoneyPageAdapter(list);
         viewPager.setAdapter(moneyPageAdapter);
-        listView=((ViewGroup)list.get(0)).findViewById(R.id.gamelist);
+        listView=((ViewGroup)list.get(1)).findViewById(R.id.gamelist);
 //        GameItemBean[]gameItemBean={ new GameItemBean("","1212"), new GameItemBean("","232"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342"),new GameItemBean("","3342")};
 //        GamelistAdapter gamelistAdapter=new GamelistAdapter(this,gameItemBean);
 //        listView.setAdapter(gamelistAdapter);
-        ListView listView2=((ViewGroup)list.get(1)).findViewById(R.id.advideo);
+        ListView listView2=((ViewGroup)list.get(2)).findViewById(R.id.advideo);
         AdItem[]gameItemBean2={ new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("今天看10个广告领奖","以观看4个","200"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","100"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩10次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高") };
         AdvideoAdapter gamelistAdapter2=new AdvideoAdapter(this,gameItemBean2);
         listView2.setAdapter(gamelistAdapter2);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        ViewGroup viewGroup= (ViewGroup) list.get(0);
+        mRvVideo =viewGroup.findViewById(R.id.rvVideo);
+        adapter = new MainAdapter(MakeMoneyActivity.this);
+        mRvVideo.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+        {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
 
@@ -192,27 +210,45 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                         resertColor(R.id.ll_include);
                         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
                         textView.setTextColor(Color.RED);
+                        linearLayouttitle.setVisibility(View.GONE);
+                        textViewtitle.setVisibility(View.GONE);
+                        adapter.contineVideo();
                         break;
                     case 1:
                         resertColor(R.id.ll_include2);
                         TextView textView1 = findViewById(R.id.ll_include2).findViewById(R.id.textView5);
                         textView1.setTextColor(Color.RED);
+                        linearLayouttitle.setVisibility(View.VISIBLE);
+                        textViewtitle.setVisibility(View.VISIBLE);
+                        adapter.pauseVideo();
                         break;
                     case 2:
                         resertColor(R.id.ll_include3);
                         TextView textView3 = findViewById(R.id.ll_include3).findViewById(R.id.textView5);
                         textView3.setTextColor(Color.RED);
+                        linearLayouttitle.setVisibility(View.VISIBLE);
+                        textViewtitle.setVisibility(View.VISIBLE);
+                        adapter.pauseVideo();
+
                         break;
 
                     case 3:
                         resertColor(R.id.ll_include4);
                         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
                         textView4.setTextColor(Color.RED);
+                        linearLayouttitle.setVisibility(View.VISIBLE);
+                        textViewtitle.setVisibility(View.VISIBLE);
+                        adapter.pauseVideo();
+
                         break;
                     case 4:
                         resertColor(R.id.ll_include5);
                         TextView textView5 = findViewById(R.id.ll_include5).findViewById(R.id.textView5);
                         textView5.setTextColor(Color.RED);
+                        linearLayouttitle.setVisibility(View.VISIBLE);
+                        textViewtitle.setVisibility(View.VISIBLE);
+                        adapter.pauseVideo();
+
                         break;
 
 
@@ -225,6 +261,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
 
             }
         });
+
     }
     @Override
     public void onClick(View v) {

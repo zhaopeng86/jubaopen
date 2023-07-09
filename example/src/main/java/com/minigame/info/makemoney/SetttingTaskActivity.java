@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easyads.info.R;
+import androidx.annotation.Nullable;
+
+import com.minigame.info.R;
+
 
 public class SetttingTaskActivity extends Activity {
     private AlertDialog alertDialog2; //单选框

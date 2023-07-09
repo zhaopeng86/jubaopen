@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.easyads.info.R;
+import androidx.annotation.NonNull;
+
 
 public class SplashDialog extends Dialog {
     LinearLayout logo;

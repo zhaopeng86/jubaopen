@@ -1,9 +1,9 @@
 package com.minigame.info;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
-import com.easyads.info.R;
+import androidx.annotation.Nullable;
+
 import com.easyads.utils.EASplashPlusManager;
 
 public class SplashToMainActivity extends BaseActivity {

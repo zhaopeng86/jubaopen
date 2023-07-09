@@ -7,7 +7,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.easyads.info.R;
+import com.minigame.info.R;
 import com.minigame.info.activity.BaseActivity;
 public class GameDetailsActivity extends BaseActivity {
 

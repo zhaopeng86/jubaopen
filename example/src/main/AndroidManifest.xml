@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.easyads.info">
+    package="com.minigame.info">
 
     <uses-sdk tools:overrideLibrary="com.bun.miitmdid,com.easyads.supplier.ks,com.kwad.sdk,com.flayone.oaid,com.miui.zeus.mimo.sdk,com.bytedance.sdk.openadsdk" />
 
@@ -57,16 +57,16 @@
             android:configChanges="keyboard|orientation|screenSize" />
         <activity android:name="com.minigame.info.custom.CustomActivity" />
 
-        <!--        小米广告SDK需要          -->
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/xm_file_paths" />
-        </provider>
+<!--        &lt;!&ndash;        小米广告SDK需要          &ndash;&gt;-->
+<!--        <provider-->
+<!--            android:name="android.provider.DocumentsProvider"-->
+<!--            android:authorities="${applicationId}.fileprovider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/xm_file_paths" />-->
+<!--        </provider>-->
 
     </application>
 

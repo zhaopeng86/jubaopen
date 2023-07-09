@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.easyads.info.R;
+import com.minigame.info.R;
 import com.minigame.info.utils.HttpUtil;
 import com.minigame.info.utils.ParseManager;
 import com.minigame.info.utils.UrlUtils;

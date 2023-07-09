@@ -2,8 +2,9 @@ package com.minigame.info;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.BuildConfig;
-import android.support.multidex.MultiDex;
+
+import androidx.multidex.BuildConfig;
+import androidx.multidex.MultiDex;
 
 import com.easyads.EasyAds;
 import com.easyads.model.EALogLevel;

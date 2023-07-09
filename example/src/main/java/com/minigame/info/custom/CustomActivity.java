@@ -3,10 +3,11 @@ package com.minigame.info.custom;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.easyads.info.R;
+import androidx.annotation.Nullable;
+
+import com.minigame.info.R;
 import com.minigame.info.SplashActivity;
 import com.minigame.info.utils.Constant;
 
