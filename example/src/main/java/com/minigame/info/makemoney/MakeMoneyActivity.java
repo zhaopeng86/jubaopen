@@ -34,8 +34,10 @@ import com.minigame.info.customview.VideoPlayRecyclerView;
 import com.minigame.info.entity.AdItem;
 import com.minigame.info.entity.GameItemBean;
 import com.minigame.info.entity.OwerProjectEntity;
+import com.minigame.info.listvideo.video_list_demo.fragments.VideoRecyclerViewFragment;
 import com.minigame.info.listview.AdvideoAdapter;
 import com.minigame.info.listview.GamelistAdapter;
+import com.minigame.info.makemoney.fragment.BlankFragment;
 import com.minigame.info.utils.BaseCallBack;
 import com.minigame.info.utils.Constant;
 import com.minigame.info.utils.HttpUtil;
@@ -66,76 +68,93 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.makemoney,null);
+        linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.activity_video_list,null);
         setContentView(linearLayoutAll);
-        linearLayouttitle=findViewById(R.id.money);
-        textViewtitle=findViewById(R.id.gametitle);
-        linearLayouttitle.setVisibility(View.GONE);
-        textViewtitle.setVisibility(View.GONE);
-        boolean hasPri = getSharedPreferences(Constant.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constant.SP_AGREE_PRIVACY, false);
-        if (!hasPri) {
-            UserPrivacyDialog dialog = new UserPrivacyDialog(this);
-            dialog.callBack = new BaseCallBack() {
-                @Override
-                public void call() {
-                    //一定要用户授权同意隐私协议后，再申领必要权限
-                    if (Build.VERSION.SDK_INT >= 23 && Build.VERSION.SDK_INT < 29) {
-                        checkAndRequestPermission();
-                    }
-                }
-            };
-            dialog.show();
-        }
-        HttpUtil.sendRequestAsynchronous(UrlUtils.App_Get_Game_list, new okhttp3.Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
+//        linearLayouttitle=findViewById(R.id.money);
+//        textViewtitle=findViewById(R.id.gametitle);
+//        linearLayouttitle.setVisibility(View.GONE);
+//        textViewtitle.setVisibility(View.GONE);
+//        boolean hasPri = getSharedPreferences(Constant.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constant.SP_AGREE_PRIVACY, false);
+//        if (!hasPri) {
+//            UserPrivacyDialog dialog = new UserPrivacyDialog(this);
+//            dialog.callBack = new BaseCallBack() {
+//                @Override
+//                public void call() {
+//                    //一定要用户授权同意隐私协议后，再申领必要权限
+//                    if (Build.VERSION.SDK_INT >= 23 && Build.VERSION.SDK_INT < 29) {
+//                        checkAndRequestPermission();
+//                    }
+//                }
+//            };
+//            dialog.show();
+//        }
+//        HttpUtil.sendRequestAsynchronous(UrlUtils.App_Get_Game_list, new okhttp3.Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                ParseManager.parseJsonWithListJsonObject(response, MakeMoneyActivity.this);
+//            }
+//        });
+//        HttpUtil.sendRequestAsynchronous(UrlUtils.App_Get_MyProject_list, new okhttp3.Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//            }
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                ParseManager.parseJsonWithListJsonObject(response, new SingleUpdateView() {
+//                    @Override
+//                    public void singleUpdateView(Object ob) {
+//                        try {
+//                            OwerProjectEntity[] owerProjectEntity=(OwerProjectEntity[])ob;
+//                            TextView textViewconr=findViewById(R.id.cornid);
+//                            textViewconr.setText(owerProjectEntity[0].getCommitinfo());
+//                            TextView textViewmonry=findViewById(R.id.moneyid);
+//                            int a=Integer.parseInt(String.valueOf(textViewconr.getText()));
+//                            NumberFormat numberFormat = NumberFormat.getNumberInstance();
+//                            numberFormat.setMaximumFractionDigits(2);
+//                            double f=a;
+//                            double c = f/10000;
+//                            String d=numberFormat.format(c);
+//                            textViewmonry.setText("约="+ d+ "元");
+//                        }catch (Exception e){
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//        inittabBar();
+//        initViewPage();
+//        initViewPageByFragment();
 
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                ParseManager.parseJsonWithListJsonObject(response, MakeMoneyActivity.this);
-            }
-        });
-        HttpUtil.sendRequestAsynchronous(UrlUtils.App_Get_MyProject_list, new okhttp3.Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                ParseManager.parseJsonWithListJsonObject(response, new SingleUpdateView() {
-                    @Override
-                    public void singleUpdateView(Object ob) {
-                        try {
-                            OwerProjectEntity[] owerProjectEntity=(OwerProjectEntity[])ob;
-                            TextView textViewconr=findViewById(R.id.cornid);
-                            textViewconr.setText(owerProjectEntity[0].getCommitinfo());
-                            TextView textViewmonry=findViewById(R.id.moneyid);
-                            int a=Integer.parseInt(String.valueOf(textViewconr.getText()));
-                            NumberFormat numberFormat = NumberFormat.getNumberInstance();
-                            numberFormat.setMaximumFractionDigits(2);
-                            double f=a;
-                            double c = f/10000;
-                            String d=numberFormat.format(c);
-                            textViewmonry.setText("约="+ d+ "元");
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        });
-        inittabBar();
-        initViewPage();
-        TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
-        textView.setTextColor(Color.RED);
-        Button button=findViewById(R.id.getmoney).findViewById(R.id.getmoneyto);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "满20元才能提现，请继续努力", Toast.LENGTH_SHORT).show();
-            }
-        });
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, new VideoRecyclerViewFragment())
+                .commit();
+//        TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
+//        textView.setTextColor(Color.RED);
+//        Button button=findViewById(R.id.getmoney).findViewById(R.id.getmoneyto);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "满20元才能提现，请继续努力", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
+    }
+
+    private void initViewPageByFragment() {
+
+        viewPager=findViewById(R.id.viewpage);
+        LinkedList fragments= new LinkedList();
+        fragments.add(new VideoRecyclerViewFragment());
+//        fragments.add(BlankFragment.newInstance("我最丑","2"));
+//        fragments.add(BlankFragment.newInstance("我很帅","3"));
+//        fragments.add(BlankFragment.newInstance("我很丑","4"));
+        MyAdapter fragmentAdapter=new MyAdapter(getSupportFragmentManager(),fragments);
+        viewPager.setAdapter(fragmentAdapter);
     }
 
     public void inittabBar(){
@@ -155,7 +174,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         imageView3.setImageResource(R.drawable.gw);
 
         TextView textView4 = findViewById(R.id.ll_include4).findViewById(R.id.textView5);
-        textView4.setText("发布任务");
+        textView4.setText("小视频");
         ImageView imageView4= findViewById(R.id.ll_include4).findViewById(R.id.imageView2);
         imageView4.setImageResource(R.drawable.sendtask);
 

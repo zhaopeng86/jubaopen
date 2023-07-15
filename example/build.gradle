@@ -46,7 +46,6 @@ repositories {
         dirs 'libs'
     }
     dependencies {
-        implementation 'com.squareup.picasso:picasso:2.71828'
         //引入方式1：gradle线上，简单快速
         //EasyAds sdk（必须）
         implementation "com.github.bayescom:EasyAds-Android:1.1"
@@ -97,5 +96,8 @@ repositories {
         implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
         implementation("com.squareup.okhttp3:okhttp")
         implementation("com.squareup.okhttp3:logging-interceptor")
+        implementation 'com.squareup.picasso:picasso:2.5.2'
+        implementation 'androidx.cardview:cardview:1.0.0'
+
     }
 }
