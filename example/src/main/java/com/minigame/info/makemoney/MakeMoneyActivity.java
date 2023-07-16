@@ -58,6 +58,8 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     ListView listView;
     LinearLayout linearLayouttitle;
     TextView textViewtitle;
+    VideoRecyclerViewFragment videoRecyclerViewFragment;
+    ShortCutVideoFragment shortCutVideoFragment;
     LinkedList fragments= new LinkedList();
 
     /**
@@ -66,16 +68,21 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initBaseView();
+        requestPersion();
+        requestServer();
+        inittabBar();
+        initViewPageByFragment();
+    }
+
+    private void initBaseView() {
         linearLayoutAll= (ViewGroup) getLayoutInflater().inflate(R.layout.makemoney,null);
         setContentView(linearLayoutAll);
         linearLayouttitle=findViewById(R.id.money);
         textViewtitle=findViewById(R.id.gametitle);
         linearLayouttitle.setVisibility(View.GONE);
         textViewtitle.setVisibility(View.GONE);
-        requestPersion();
-        requestServer();
-        inittabBar();
-        initViewPageByFragment();
+
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
         textView.setTextColor(Color.RED);
         Button button=findViewById(R.id.getmoney).findViewById(R.id.getmoneyto);
@@ -134,10 +141,10 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
             dialog.show();
         }
     }
-    VideoRecyclerViewFragment videoRecyclerViewFragment;
     private void initViewPageByFragment() {
         viewPager=findViewById(R.id.viewpage);
-        fragments.add(new ShortCutVideoFragment());
+        shortCutVideoFragment =new ShortCutVideoFragment();
+        fragments.add(shortCutVideoFragment);
         videoRecyclerViewFragment=new VideoRecyclerViewFragment();
         fragments.add(videoRecyclerViewFragment);
         fragments.add(new ADFragment());
@@ -145,7 +152,10 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         fragments.add(new MyAccountFragment());
         MyAdapter fragmentAdapter=new MyAdapter(getSupportFragmentManager(),fragments);
         viewPager.setAdapter(fragmentAdapter);
-        ShortCutVideoFragment shortCutVideoFragment= (ShortCutVideoFragment) fragments.get(0);
+        addViewPageChangeListener(shortCutVideoFragment);
+    }
+
+    private void addViewPageChangeListener(ShortCutVideoFragment shortCutVideoFragment) {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
             @Override
@@ -205,7 +215,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
             public void onPageScrollStateChanged(int i) {
             }
         });
-
     }
 
     public void inittabBar(){

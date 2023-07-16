@@ -39,35 +39,6 @@ public class ADFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpUtil.sendRequestAsynchronous(UrlUtils.App_Get_MyProject_list, new okhttp3.Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                ParseManager.parseJsonWithListJsonObject(response, new SingleUpdateView() {
-                    @Override
-                    public void singleUpdateView(Object ob) {
-//                        try {
-//                            OwerProjectEntity[] owerProjectEntity=(OwerProjectEntity[])ob;
-//                            TextView textViewconr=findViewById(R.id.cornid);
-//                            textViewconr.setText(owerProjectEntity[0].getCommitinfo());
-//                            TextView textViewmonry=findViewById(R.id.moneyid);
-//                            int a=Integer.parseInt(String.valueOf(textViewconr.getText()));
-//                            NumberFormat numberFormat = NumberFormat.getNumberInstance();
-//                            numberFormat.setMaximumFractionDigits(2);
-//                            double f=a;
-//                            double c = f/10000;
-//                            String d=numberFormat.format(c);
-//                            textViewmonry.setText("约="+ d+ "元");
-//                        }catch (Exception e){
-//                            e.printStackTrace();
-//                        }
-                    }
-                });
-            }
-        });
-
     }
 
     @Nullable
