@@ -29,12 +29,8 @@ import com.minigame.info.TaskDetailsEditeActivity;
 import com.minigame.info.activity.BaseActivity;
 import com.minigame.info.activity.SingleUpdateView;
 import com.minigame.info.activity.UpDateView;
-import com.minigame.info.customview.MainAdapter;
-import com.minigame.info.customview.VideoPlayRecyclerView;
-import com.minigame.info.entity.AdItem;
 import com.minigame.info.entity.OwerProjectEntity;
-import com.minigame.info.listvideo.video_list_demo.fragments.VideoRecyclerViewFragment;
-import com.minigame.info.listview.AdvideoAdapter;
+import com.minigame.info.makemoney.fragment.VideoRecyclerViewFragment;
 import com.minigame.info.makemoney.fragment.ADFragment;
 import com.minigame.info.makemoney.fragment.GameFragment;
 import com.minigame.info.makemoney.fragment.MyAccountFragment;
@@ -79,7 +75,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         requestPersion();
         requestServer();
         inittabBar();
-//        initViewPage();
         initViewPageByFragment();
         TextView textView = findViewById(R.id.ll_include).findViewById(R.id.textView5);
         textView.setTextColor(Color.RED);
@@ -90,7 +85,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), "满20元才能提现，请继续努力", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     private void requestServer() {
@@ -140,11 +134,12 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
             dialog.show();
         }
     }
-
+    VideoRecyclerViewFragment videoRecyclerViewFragment;
     private void initViewPageByFragment() {
         viewPager=findViewById(R.id.viewpage);
         fragments.add(new ShortCutVideoFragment());
-        fragments.add(new VideoRecyclerViewFragment());
+        videoRecyclerViewFragment=new VideoRecyclerViewFragment();
+        fragments.add(videoRecyclerViewFragment);
         fragments.add(new ADFragment());
         fragments.add(new GameFragment());
         fragments.add(new MyAccountFragment());
@@ -167,6 +162,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                         linearLayouttitle.setVisibility(View.GONE);
                         textViewtitle.setVisibility(View.GONE);
                         shortCutVideoFragment.getAdapter().contineVideo();
+                        videoRecyclerViewFragment.onStop();
                         break;
                     case 1:
                         resertColor(R.id.ll_include2);
@@ -175,6 +171,7 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
                         linearLayouttitle.setVisibility(View.VISIBLE);
                         textViewtitle.setVisibility(View.VISIBLE);
                         shortCutVideoFragment.getAdapter().pauseVideo();
+                        videoRecyclerViewFragment.playVideo();
                         break;
                     case 2:
                         resertColor(R.id.ll_include3);
@@ -244,28 +241,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         findViewById(R.id.ll_include4).setOnClickListener(this);
         findViewById(R.id.ll_include5).setOnClickListener(this);
 
-    }
-    private VideoPlayRecyclerView mRvVideo;
-    private MainAdapter adapter;
-    public void initViewPage(){
-        viewPager=findViewById(R.id.viewpage);
-        LinkedList list= new LinkedList();
-        list.add(getLayoutInflater().inflate(R.layout.payment,null));
-        list.add(getLayoutInflater().inflate(R.layout.mingame,null));
-        list.add(getLayoutInflater().inflate(R.layout.advideo,null));
-        list.add(getLayoutInflater().inflate(R.layout.tasklayout,null));
-        list.add(getLayoutInflater().inflate(R.layout.setting,null));
-        MoneyPageAdapter moneyPageAdapter=new MoneyPageAdapter(list);
-        viewPager.setAdapter(moneyPageAdapter);
-        listView=((ViewGroup)list.get(1)).findViewById(R.id.gamelist);
-        ListView listView2=((ViewGroup)list.get(2)).findViewById(R.id.advideo);
-        AdItem[]gameItemBean2={ new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("今天看10个广告领奖","以观看4个","200"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","100"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩10次","5000最高"),new AdItem("看广告赚金币","看广告直接零钱，今天还剩8次","5000最高") };
-        AdvideoAdapter gamelistAdapter2=new AdvideoAdapter(this,gameItemBean2);
-        listView2.setAdapter(gamelistAdapter2);
-        ViewGroup viewGroup= (ViewGroup) list.get(0);
-        mRvVideo =viewGroup.findViewById(R.id.rvVideo);
-        adapter = new MainAdapter(MakeMoneyActivity.this);
-        mRvVideo.setAdapter(adapter);
     }
     @Override
     public void onClick(View v) {
@@ -355,7 +330,6 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
             }
         }
     };
-
 
     public void updateServerMoney(){
         TextView textViewconr=findViewById(R.id.cornid);
