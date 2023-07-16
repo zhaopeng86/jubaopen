@@ -125,4 +125,16 @@ public class VideoPlayerManagerFragment extends Fragment implements View.OnClick
 
         mVideoPlayerManager.stopAnyPlayback();
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mVideoPlayerManager.stopAnyPlayback();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mVideoPlayerManager.resetMediaPlayer();
+    }
 }

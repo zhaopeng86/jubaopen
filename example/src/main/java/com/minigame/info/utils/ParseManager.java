@@ -88,7 +88,7 @@ public class ParseManager {
             case PACKAGE_NAME+".OwnerProjectActivity":
                 userInfers =new Gson().fromJson(jsonStr, OwerProjectEntity[].class);
                 break;
-            case PACKAGE_NAME+".makemoney.MakeMoneyActivity":
+            case PACKAGE_NAME+".makemoney.fragment.GameFragment":
                 userInfers =new Gson().fromJson(jsonStr, GameItemBean[].class);
                 break;
             default:
