@@ -1,6 +1,7 @@
 package com.minigame.info.customview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
@@ -16,6 +17,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.minigame.info.R;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
 
 public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
     private Context mContext;
@@ -25,6 +34,8 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
 
     private VideoPlayer videoPlayer;
     private TextureView textureView;
+
+    LinkedHashSet<String>linkedHashSet=new LinkedHashSet<String>();
 
     public MainAdapter(Context mContext) {
         this.mContext = mContext;
@@ -109,7 +120,51 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
             }
             mCurrentHolder.flVideo.addView(textureView);
         }
-        videoPlayer.setDataSource("https://txmov2.a.yximgs.com/bs2/newWatermark/MjczMzU3NDA0ODU_zh_3.mp4");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+
+                    String url = "https://haokan.baidu.com/";
+                    Document doc = Jsoup.connect(url)
+                            .timeout(5000)
+                            .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36")
+                            .get();
+                    Elements movieList = doc.select("div.ssr-videoitem");
+                    for (Element content : movieList) {
+//                        String links = movie.attr("href");
+//                        Log.e("dfa",links);
+                        Elements linksElements = content.getElementsByTag("a");
+                        for (Element ele : linksElements) {
+                            String a = ele.attr("href");
+                            if (a.contains("recommend")){
+                                linkedHashSet.add(a);
+                            }
+                        }
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+                for (String o:linkedHashSet){
+
+                    Log.e("afdadf",o);
+
+                }
+
+
+            }
+        }).start();
+
+
+        videoPlayer.setDataSource("https://vd4.bdstatic.com/mda-pgdybj10g39z4njs/sc/cae_h264/1689386790610360654/mda-pgdybj10g39z4njs.mp4?v_from_s=hkapp-haokan-hbf&auth_key=1689532901-0-0-416964d13e7a1ebf6958e4d39aa63f05&bcevod_channel=searchbox_feed&cr=2&cd=0&pd=1&pt=3&logid=2501623209&vid=9897889990358439252&abtest=&klogid=2501623209");
+
+//        videoPlayer.setDataSource("https://txmov2.a.yximgs.com/bs2/newWatermark/MjczMzU3NDA0ODU_zh_3.mp4");
+
+//                videoPlayer.setDataSource("https://download-video.akamaized.net/2/download/6c333d09-188c-458b-94ec-3b277da938dc/925b490e/pexels-noman-khan-17436125%20%281440p%29.mp4?__token__=st=1689515414~exp=1689530916~acl=%2F2%2Fdownload%2F6c333d09-188c-458b-94ec-3b277da938dc%2F925b490e%2Fpexels-noman-khan-17436125%2520%25281440p%2529.mp4%2A~hmac=4a09b37b37f3c7a1758b65362772fe0b2025d2952d32d85a117de76ac934ee65&r=dXMtY2VudHJhbDE%3D");
+
         videoPlayer.prepare();
     }
 

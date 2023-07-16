@@ -43,6 +43,7 @@ import com.minigame.info.utils.UrlUtils;
 import com.minigame.info.utils.UserPrivacyDialog;
 
 import org.jetbrains.annotations.NotNull;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -73,6 +74,12 @@ public class MakeMoneyActivity extends BaseActivity implements View.OnClickListe
         requestServer();
         inittabBar();
         initViewPageByFragment();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                shortCutVideoFragment.getAdapter().contineVideo();
+            }
+        },10000);
     }
 
     private void initBaseView() {
