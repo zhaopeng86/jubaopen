@@ -98,7 +98,6 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="..."
-            android:visibility="invisible"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
     </LinearLayout>

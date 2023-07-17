@@ -39,7 +39,6 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
 
     private int mCurrentPosition;
     private ViewHolder mCurrentHolder;
-
     private VideoPlayer videoPlayer;
     private TextureView textureView;
 
@@ -51,11 +50,19 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
         textureView = new TextureView(mContext);
         videoPlayer.setTextureView(textureView);
         this.shortItemBeans=shortItemBean;
+        getDataFromServer(1);
+    }
+
+    private void getDataFromServer(int page) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    String buffer="zonghe_0_0_0_0_0_0_"+2+".html";
                     String url = "https://www.tukuppt.com/video/v103/";
+                    if (page>=2){
+                        url=url+buffer;
+                    }
                     Document doc = Jsoup.connect(url)
                             .timeout(5000)
                             .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36")
@@ -84,8 +91,6 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
 
             }
         }).start();
-
-
     }
 
     @NonNull
@@ -100,6 +105,7 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
         RequestOptions options = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(mContext).load(shortItemBeans.get(position).getImageUrl()).apply(options).into(holder.ivCover);
         holder.nickName.setText(shortItemBeans.get(position).getTitle());
+        holder.content.setText(String.valueOf(position));
     }
 
 
@@ -113,6 +119,11 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
         mCurrentPosition = itemPosition;
         mCurrentHolder = new ViewHolder(itemView);
         playVideo(shortItemBeans.get(itemPosition).getVideoUrl());
+
+        if (itemPosition==shortItemBeans.size()-5){
+
+            getDataFromServer(2);
+        }
     }
 
     public void pauseVideo(){
@@ -182,12 +193,15 @@ public class MainAdapter extends VideoPlayAdapter<MainAdapter.ViewHolder> {
 
         private TextView nickName;
 
+        private TextView content;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             flVideo = itemView.findViewById(R.id.flVideo);
             ivCover = itemView.findViewById(R.id.ivCover);
             pbLoading = itemView.findViewById(R.id.pbLoading);
             nickName=itemView.findViewById(R.id.tvNickname);
+            content =itemView.findViewById(R.id.tvContent);
+
         }
     }
 
