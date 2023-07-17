@@ -5,7 +5,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="200dp"
+        android:paddingTop="180dp"
+        >
 
         <FrameLayout
             android:id="@+id/flVideo"
@@ -42,6 +45,7 @@
         android:paddingLeft="15dp"
         android:paddingTop="13dp"
         android:paddingBottom="13dp"
+        android:visibility="invisible"
         android:textColor="@android:color/white"
         android:textColorHint="#80ffffff"
         android:textSize="15sp" />
@@ -94,6 +98,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="..."
+            android:visibility="invisible"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
     </LinearLayout>
