@@ -14,6 +14,7 @@ import android.widget.AbsListView;
 import com.minigame.info.R;
 import com.minigame.info.listvideo.video_list_demo.adapter.VideoRecyclerViewAdapter;
 import com.minigame.info.listvideo.video_list_demo.adapter.items.BaseVideoItem;
+import com.minigame.info.listvideo.video_list_demo.adapter.items.DirectLinkVideoItem;
 import com.minigame.info.listvideo.video_list_demo.adapter.items.ItemFactory;
 import com.minigame.info.listvideo.video_player_manager.Config;
 import com.minigame.info.listvideo.video_player_manager.manager.PlayerItemChangeListener;
@@ -25,6 +26,8 @@ import com.minigame.info.listvideo.list_visibility_utils.calculator.ListItemsVis
 import com.minigame.info.listvideo.list_visibility_utils.calculator.SingleListViewItemActiveCalculator;
 import com.minigame.info.listvideo.list_visibility_utils.scroll_utils.ItemsPositionGetter;
 import com.minigame.info.listvideo.list_visibility_utils.scroll_utils.RecyclerViewItemPositionGetter;
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -68,25 +71,31 @@ public class VideoRecyclerViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        DirectLinkVideoItem directLinkVideoItem=new DirectLinkVideoItem("asfsadf","https://img.tukuppt.com/video_show/2405811/00/01/88/5b4c5a2107fb2.mp4",mVideoPlayerManager,Picasso.with(getContext()),0);
+        DirectLinkVideoItem directLinkVideoItem2=new DirectLinkVideoItem("asfsadf","https://img.tukuppt.com/video_show/2405811/00/01/88/5b4c5a2107fb2.mp4",mVideoPlayerManager,Picasso.with(getContext()),0);
+        DirectLinkVideoItem directLinkVideoItem3=new DirectLinkVideoItem("asfsadf","https://img.tukuppt.com/video_show/2405811/00/01/88/5b4c5a2107fb2.mp4",mVideoPlayerManager,Picasso.with(getContext()),0);
+        mList.add(directLinkVideoItem);
+        mList.add(directLinkVideoItem2);
+        mList.add(directLinkVideoItem3);
 
-        try {
-            mList.add(ItemFactory.createItemFromAsset("video_sample_1.mp4", R.drawable.video_sample_1_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_2.mp4", R.drawable.video_sample_2_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_3.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_4.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
-
-            mList.add(ItemFactory.createItemFromAsset("video_sample_1.mp4", R.drawable.video_sample_1_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_2.mp4", R.drawable.video_sample_2_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_3.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_4.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
-
-            mList.add(ItemFactory.createItemFromAsset("video_sample_1.mp4", R.drawable.video_sample_1_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_2.mp4", R.drawable.video_sample_2_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_3.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
-            mList.add(ItemFactory.createItemFromAsset("video_sample_4.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_1.mp4", R.drawable.video_sample_1_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_2.mp4", R.drawable.video_sample_2_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_3.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_4.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
+//
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_1.mp4", R.drawable.video_sample_1_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_2.mp4", R.drawable.video_sample_2_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_3.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_4.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
+//
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_1.mp4", R.drawable.video_sample_1_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_2.mp4", R.drawable.video_sample_2_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_3.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
+//            mList.add(ItemFactory.createItemFromAsset("video_sample_4.mp4", R.drawable.video_sample_3_pic, getActivity(), mVideoPlayerManager));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         View rootView = inflater.inflate(R.layout.fragment_video_recycler_view, container, false);
 

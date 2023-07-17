@@ -32,7 +32,7 @@ public class DirectLinkVideoItem extends BaseVideoItem {
     public void update(int position, VideoViewHolder viewHolder, VideoPlayerManager videoPlayerManager) {
         viewHolder.mTitle.setText(mTitle);
         viewHolder.mCover.setVisibility(View.VISIBLE);
-        mImageLoader.load(mImageResource).into(viewHolder.mCover);
+//        mImageLoader.load(mImageResource).into(viewHolder.mCover);
     }
 
     @Override
